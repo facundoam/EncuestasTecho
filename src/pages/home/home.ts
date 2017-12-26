@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PedidosEncuestaServiceProvider } from '../providers/pedidos-encuesta-service/pedidos-encuesta-service';
+import { PedidosEncuestaServiceProvider } from '../../providers/pedidos-encuesta-service/pedidos-encuesta-service';
 
 @Component({
   selector: 'page-home',

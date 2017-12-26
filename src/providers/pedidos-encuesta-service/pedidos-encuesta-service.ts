@@ -35,7 +35,7 @@ export class PedidosEncuestaServiceProvider {
   }
 
   private logResponse(res: Response){
-    console.log(res);
+    return console.log(res);
   }
 
   private extractData(res: Response){
