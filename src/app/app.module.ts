@@ -7,6 +7,8 @@ import { HttpModule } from '@angular/http'
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PedidosEncuestaServiceProvider } from '../providers/pedidos-encuesta-service/pedidos-encuesta-service';
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { PedidosEncuestaServiceProvider } from '../providers/pedidos-encuesta-se
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PedidosEncuestaServiceProvider
+    PedidosEncuestaServiceProvider,
+    Geolocation
   ]
 })
 export class AppModule {}
