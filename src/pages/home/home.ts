@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { PedidosEncuestaServiceProvider } from '../providers/pedidos-encuesta-service/pedidos-encuesta-service';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +7,12 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(private pedidosService: PedidosEncuestaServiceProvider) {
+    this.getPedidosEncuestas();
+  }
 
+  getPedidosEncuestas(){
+    this.pedidosService.getPedidosEncuestas().subscribe(data => console.log(data));
   }
 
 }
