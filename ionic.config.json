@@ -1,0 +1,8 @@
+{
+  "name": "pencuestas",
+  "app_id": "70b576b7",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
