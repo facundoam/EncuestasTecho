@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 /*
   Generated class for the PedidosEncuestaServiceProvider provider.
@@ -23,25 +21,18 @@ export class PedidosEncuestaServiceProvider {
   }
 
   getPedidosEncuestas(){
-    return this.http.get(this.URL_GET_PEDIDOS)
-    .do(this.logResponse)
-    .map(this.extractData)
-    .catch(this.catchError)
-  }
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('x-ibm-client-id', 'e20f3d89-9525-4f01-a13b-6077efa75a59');
+    headers.append('x-ibm-client-secret', 'yS4iO5xP3nC6qE5yW3yW7oV4aC4vB7jA3yO2eY4aL0hL0dT5wT');
 
-  private catchError(error: Response | any){
-    console.log(error);
-    return Observable.throw(error.json().error || "Server Error!");
-  }
 
-  private logResponse(res: Response){
-    return console.log(res);
-  }
+    let options = new RequestOptions({ headers: headers });
 
-  private extractData(res: Response){
-    return res.json();
+    return this.http.get(this.URL_GET_PEDIDOS,options)
+    .map(res => res.json());
   }
-
 
 
 }

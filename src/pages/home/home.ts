@@ -7,12 +7,14 @@ import { PedidosEncuestaServiceProvider } from '../../providers/pedidos-encuesta
 })
 export class HomePage {
 
+  listaPedidos = [];
+
   constructor(private pedidosService: PedidosEncuestaServiceProvider) {
     this.getPedidosEncuestas();
   }
 
   getPedidosEncuestas(){
-    this.pedidosService.getPedidosEncuestas().subscribe(data => console.log(data));
+    this.pedidosService.getPedidosEncuestas().subscribe(data => this.listaPedidos = data);
   }
 
 }
