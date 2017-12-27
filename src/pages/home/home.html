@@ -1,28 +1,37 @@
-<ion-content>
 
-  <ion-card *ngFor="let pedido of listaPedidos">
-    <img src="../../assets/imgs/techologo.png">
-    <ion-item>
-      <ion-icon name="football" item-start large></ion-icon>
-      <h2>Direccion</h2>
-      <p>{{pedido.direccion}}</p>
-    </ion-item>
+<ion-header>
+  <ion-navbar>
+    <ion-title>Pedidos de Encuestas</ion-title>
+  </ion-navbar>
+</ion-header>
 
-    <ion-item>
-      <ion-icon name="wine" item-left large ></ion-icon>
-      <h2>Telefono</h2>
-      <p>{{pedido.telefono}}</p>
-    </ion-item>
+  <ion-content>
+      <ion-card *ngFor="let pedido of listaPedidos">
 
-    <ion-item>
-      <span item-left>18 min</span>
-      <span item-left>(2.6 mi)</span>
-      <button ion-button (click)="getCurrentPosition()" icon-left clear item-end>
-        <ion-icon name="navigate"></ion-icon>
-        Ir
-      </button>
-    </ion-item>
+      <ion-item>
+        <h2>{{pedido.nyaVecino}}</h2>
+        <p>{{pedido.direccion}}</p>
+      </ion-item>
 
-  </ion-card>
+      <img src="http://maps.googleapis.com/maps/api/staticmap?center={{pedido.puntoGeografico.lat}},{{pedido.puntoGeografico.lng}}&zoom=17&size=400x400&markers=color:blue%7Clabel:C%7C{{pedido.puntoGeografico.lat}},{{pedido.puntoGeografico.lng}}&markers=size:mid&key=AIzaSyC1uBdgcDXvykhhe_dt3mJ2OkYN-1TBUPA">
 
-</ion-content>
+      <ion-card-content>
+        <p>{{pedido.comentarios}}</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="navigate"></ion-icon>
+            <div>Ir</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            {{pedido.fechaPedido}}
+          </ion-note>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+      <ion-content>
