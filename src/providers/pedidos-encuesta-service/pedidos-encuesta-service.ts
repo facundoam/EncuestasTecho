@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 /*
@@ -17,7 +15,7 @@ export class PedidosEncuestaServiceProvider {
 
 
   constructor(private http: Http) {
-    console.log('Hello PedidosEncuestaServiceProvider Provider');
+    console.log('Provider de encuestas starteado.');
   }
 
   getPedidosEncuestas(){

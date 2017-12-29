@@ -11,8 +11,11 @@ import { AlertController } from 'ionic-angular';
 export class HomePage {
 
   listaPedidos = [];
+  listaPedidosFiltrados = [];
 
-  constructor(private alertCtrl: AlertController, private pedidosService: PedidosEncuestaServiceProvider, private geolocation: Geolocation) {
+  constructor(private alertCtrl: AlertController,
+    private pedidosService: PedidosEncuestaServiceProvider,
+    private geolocation: Geolocation) {
     this.ionViewDidLoad();
   }
 
@@ -26,6 +29,7 @@ export class HomePage {
       let latitude = resp.coords.latitude;
       let longitude = resp.coords.longitude;
       this.showAlert(latitude,longitude);
+
     }).catch((error) => {
       console.log('Error getting location', error);
     });
@@ -42,7 +46,26 @@ export class HomePage {
  }
 
   getPedidosEncuestas(){
-    this.pedidosService.getPedidosEncuestas().subscribe(data => this.listaPedidos = data);
+    this.pedidosService.getPedidosEncuestas().subscribe(data => {
+      this.listaPedidos = data;
+      this.listaPedidosFiltrados = data;
+    });
+  }
+
+  inicializarArrayDePedidosFiltrados() {
+    this.listaPedidosFiltrados = this.listaPedidos.slice();
+  }
+
+  getPedidosFiltrados(ev: any) {
+    this.inicializarArrayDePedidosFiltrados();
+
+    let val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.listaPedidosFiltrados = this.listaPedidosFiltrados.filter((pedido) => {
+        return (pedido.nyaVecino.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
 }
