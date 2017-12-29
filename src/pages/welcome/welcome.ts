@@ -37,8 +37,14 @@ export class WelcomePage {
   }
 
   pushAgustoni(){
-    this.navCtrl.push(AgustoniPage,{'listaPedidos' : this.listaPedidos});
+    this.navCtrl.push(AgustoniPage,{'listaPedidos' : this.listaPedidos.filter((pedido) => {
+      if(pedido.nyaVecino.includes("agustoni"))
+      return true;
+    })
+  });
   }
+
+
 
 
 }
