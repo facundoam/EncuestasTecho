@@ -1,26 +1,27 @@
 import { Component } from '@angular/core';
-import { PedidosEncuestaServiceProvider } from '../../providers/pedidos-encuesta-service/pedidos-encuesta-service';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AlertController } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-agustoni',
+  templateUrl: 'agustoni.html'
 })
 
-export class HomePage {
+export class AgustoniPage {
 
   listaPedidos = [];
   listaPedidosFiltrados = [];
 
   constructor(private alertCtrl: AlertController,
-    private pedidosService: PedidosEncuestaServiceProvider,
-    private geolocation: Geolocation) {
-    this.ionViewDidLoad();
+    private geolocation: Geolocation,
+    private navParams: NavParams) {
+
   }
 
    ionViewDidLoad(){
-     this.getPedidosEncuestas();
+     this.listaPedidos = this.navParams.get('listaPedidos');
+     this.inicializarArrayDePedidosFiltrados();
    }
 
   getCurrentPosition(){
@@ -44,13 +45,6 @@ export class HomePage {
    });
    alert.present();
  }
-
-  getPedidosEncuestas(){
-    this.pedidosService.getPedidosEncuestas().subscribe(data => {
-      this.listaPedidos = data;
-      this.listaPedidosFiltrados = data;
-    });
-  }
 
   inicializarArrayDePedidosFiltrados() {
     this.listaPedidosFiltrados = this.listaPedidos.slice();

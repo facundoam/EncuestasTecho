@@ -1,17 +1,26 @@
 
+
 <ion-header>
   <ion-navbar>
-    <button ion-button icon-only menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Pedidos de Encuestas</ion-title>
-    <ion-searchbar (ionInput)="getPedidosFiltrados($event)"></ion-searchbar>
+    <ion-title>
+      Agustoni
+    </ion-title>
   </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar por nombre" (ionInput)="getPedidosFiltrados($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 
 
-  <ion-content>
+
+
+
+  <ion-content has-header="true" has-tabs="true">
+
+
+
+
       <ion-card *ngFor="let pedido of listaPedidosFiltrados">
 
       <ion-item>

@@ -5,15 +5,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http'
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { PedidosEncuestaServiceProvider } from '../providers/pedidos-encuesta-service/pedidos-encuesta-service';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { WelcomePage } from '../pages/welcome/welcome';
+import { AgustoniPage } from '../pages/agustoni/agustoni';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    AgustoniPage,
+    WelcomePage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { Geolocation } from '@ionic-native/geolocation';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    AgustoniPage,
+    WelcomePage
   ],
   providers: [
     StatusBar,
