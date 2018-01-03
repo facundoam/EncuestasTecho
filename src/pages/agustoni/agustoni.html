@@ -8,13 +8,15 @@
       </button>
   </ion-buttons>
   <ion-title>Agustoni</ion-title>
-  <ion-searchbar placeholder="Buscar por nombre" (ionInput)="getPedidosFiltrados($event)"></ion-searchbar>
   <ion-buttons end>
       <button>
           <ion-icon name="add"></ion-icon>
       </button>
   </ion-buttons>
 </ion-navbar>
+<ion-toolbar>
+  <ion-searchbar placeholder="Buscar por nombre" (ionInput)="getPedidosFiltrados($event)"></ion-searchbar>
+</ion-toolbar>
 </ion-header>
 
 
