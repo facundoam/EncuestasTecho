@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AlertController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 
+@IonicPage()
 @Component({
   selector: 'page-agustoni',
   templateUrl: 'agustoni.html'

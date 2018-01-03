@@ -16,7 +16,8 @@ import { LomitaPage } from "../pages/lomita/lomita";
   declarations: [
     MyApp,
     AgustoniPage,
-    WelcomePage
+    WelcomePage,
+    LomitaPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,8 @@ import { LomitaPage } from "../pages/lomita/lomita";
   entryComponents: [
     MyApp,
     AgustoniPage,
-    WelcomePage
+    WelcomePage,
+    LomitaPage
   ],
   providers: [
     StatusBar,
