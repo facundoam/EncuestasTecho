@@ -1,14 +1,20 @@
 
 
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Agustoni
-    </ion-title>
-  </ion-navbar>
-  <ion-toolbar>
-    <ion-searchbar placeholder="Buscar por nombre" (ionInput)="getPedidosFiltrados($event)"></ion-searchbar>
-  </ion-toolbar>
+<ion-navbar primary>
+  <ion-buttons left>
+      <button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+  </ion-buttons>
+  <ion-title>Agustoni</ion-title>
+  <ion-searchbar placeholder="Buscar por nombre" (ionInput)="getPedidosFiltrados($event)"></ion-searchbar>
+  <ion-buttons end>
+      <button>
+          <ion-icon name="add"></ion-icon>
+      </button>
+  </ion-buttons>
+</ion-navbar>
 </ion-header>
 
 
