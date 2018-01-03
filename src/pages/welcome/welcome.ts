@@ -21,6 +21,8 @@ export class WelcomePage {
 
   augstoniPage = AgustoniPage;
   listaPedidos = [];
+  listaPedidosAgustoni = [];
+
   constructor(private pedidosService: PedidosEncuestaServiceProvider,
     public navCtrl: NavController,
     public navParams: NavParams) {
@@ -30,18 +32,18 @@ export class WelcomePage {
     this.getPedidosEncuestas();
   }
 
-  getPedidosEncuestas(){
+  getPedidosEncuestas() {
     this.pedidosService.getPedidosEncuestas().subscribe(data => {
       this.listaPedidos = data;
+      this.listaPedidosAgustoni = data.filter((pedido) => {
+        if (pedido.nyaVecino.includes("agustoni"))
+          return true;
+      });
     });
   }
 
-  pushAgustoni(){
-    this.navCtrl.push(AgustoniPage,{'listaPedidos' : this.listaPedidos.filter((pedido) => {
-      if(pedido.nyaVecino.includes("agustoni"))
-      return true;
-    })
-  });
+  pushAgustoni() {
+    this.navCtrl.push(AgustoniPage, { 'listaPedidos': this.listaPedidosAgustoni });
   }
 
 
