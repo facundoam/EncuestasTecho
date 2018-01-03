@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AgustoniPage } from '../agustoni/agustoni'
 import { PedidosEncuestaServiceProvider } from '../../providers/pedidos-encuesta-service/pedidos-encuesta-service';
-import { LomitaPage } from "../lomita/lomita";
+import { LomitaPage } from '../lomita/lomita';
 
 /**
  * Generated class for the WelcomePage page.

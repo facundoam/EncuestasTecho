@@ -9,7 +9,7 @@ import { PedidosEncuestaServiceProvider } from '../providers/pedidos-encuesta-se
 import { Geolocation } from '@ionic-native/geolocation';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { AgustoniPage } from '../pages/agustoni/agustoni';
-import { LomitaPage } from "../pages/lomita/lomita";
+import { LomitaPage } from '../pages/lomita/lomita';
 
 
 @NgModule({
