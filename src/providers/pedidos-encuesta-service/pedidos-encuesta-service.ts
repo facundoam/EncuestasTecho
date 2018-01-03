@@ -30,6 +30,8 @@ export class PedidosEncuestaServiceProvider {
 
     return this.http.get(this.URL_GET_PEDIDOS,options)
     .map(res => res.json());
+
+
   }
 
 
