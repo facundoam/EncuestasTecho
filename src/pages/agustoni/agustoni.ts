@@ -3,7 +3,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AlertController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
-
+import { ModalController } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-agustoni',
@@ -17,8 +17,17 @@ export class AgustoniPage {
 
   constructor(private alertCtrl: AlertController,
     private geolocation: Geolocation,
-    private navParams: NavParams) {
+    private navParams: NavParams,
+  private modal: ModalController) {
 
+  }
+
+  openModalAdd(){
+    const datos = {
+      ubicacion: this.getCurrentPosition,
+    };
+   const modalAgustoniAdd =  this.modal.create('ModalAgustoniAddPage', datos);
+   modalAgustoniAdd.present();
   }
 
    ionViewDidLoad(){
@@ -32,7 +41,12 @@ export class AgustoniPage {
       let latitude = resp.coords.latitude;
       let longitude = resp.coords.longitude;
       this.showAlert(latitude,longitude);
+      let ubicacion = {
+        latitud: latitude,
+        longitud: longitude
+      };
 
+      return ubicacion;
     }).catch((error) => {
       console.log('Error getting location', error);
     });
