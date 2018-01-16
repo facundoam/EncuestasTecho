@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class PedidosEncuestaServiceProvider {
 
   private URL_GET_PEDIDOS: string = "https://api.us.apiconnect.ibmcloud.com/ariasmelaribmcom-dev/sb/api/PedidoEncuesta";
-
+  private URL_POST_PEDIDO: string = "https://api.us.apiconnect.ibmcloud.com/ariasmelaribmcom-dev/sb/api/PedidoEncuesta";
 
   constructor(private http: Http) {
     console.log('Provider de encuestas starteado.');
@@ -34,5 +34,20 @@ export class PedidosEncuestaServiceProvider {
 
   }
 
+  postPedidoEncuesta(datos: any){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('x-ibm-client-id', 'e20f3d89-9525-4f01-a13b-6077efa75a59');
+    headers.append('x-ibm-client-secret', 'yS4iO5xP3nC6qE5yW3yW7oV4aC4vB7jA3yO2eY4aL0hL0dT5wT');
+
+
+    let options = new RequestOptions({ headers: headers });
+      console.log(datos);
+      return this.http.post(this.URL_POST_PEDIDO, JSON.stringify(datos), options)
+        .map(res => res.json())
+        .toPromise();
+
+  }
 
 }
