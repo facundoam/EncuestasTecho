@@ -18,29 +18,39 @@ export class AgustoniPage {
   constructor(private alertCtrl: AlertController,
     private geolocation: Geolocation,
     private navParams: NavParams,
-  private modal: ModalController) {
+    private modal: ModalController) {
 
   }
 
-  openModalAdd(){
-    const datos = {
-      ubicacion: this.getCurrentPosition,
-    };
-   const modalAgustoniAdd =  this.modal.create('ModalAgustoniAddPage', datos);
-   modalAgustoniAdd.present();
-  }
-
-   ionViewDidLoad(){
-     this.listaPedidos = this.navParams.get('listaPedidos');
-     this.inicializarArrayDePedidosFiltrados();
-   }
-
-  getCurrentPosition(){
-    let posOptions = {timeout: 10000, enableHighAccuracy: false};
+  openModalAdd() {
+    let posOptions = { timeout: 10000, enableHighAccuracy: true };
     this.geolocation.getCurrentPosition(posOptions).then((resp) => {
       let latitude = resp.coords.latitude;
       let longitude = resp.coords.longitude;
-      this.showAlert(latitude,longitude);
+      let datosUbicacion = {
+        latitud: latitude,
+        longitud: longitude
+      };
+
+      const modalAgustoniAdd = this.modal.create('ModalAgustoniAddPage', { dataUbi: datosUbicacion });
+      modalAgustoniAdd.present();
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
+  }
+
+  ionViewDidLoad() {
+    this.listaPedidos = this.navParams.get('listaPedidos');
+    this.inicializarArrayDePedidosFiltrados();
+  }
+
+  getCurrentPosition() {
+    let posOptions = { timeout: 10000, enableHighAccuracy: false };
+    this.geolocation.getCurrentPosition(posOptions).then((resp) => {
+      let latitude = resp.coords.latitude;
+      let longitude = resp.coords.longitude;
       let ubicacion = {
         latitud: latitude,
         longitud: longitude
@@ -53,14 +63,14 @@ export class AgustoniPage {
 
   }
 
-  showAlert(lat,lng) {
-   let alert = this.alertCtrl.create({
-     title: 'New Friend!',
-     subTitle: 'lat: ' + lat + '  lng:' + lng ,
-     buttons: ['OK']
-   });
-   alert.present();
- }
+  showAlert(lat, lng) {
+    let alert = this.alertCtrl.create({
+      title: 'New Friend!',
+      subTitle: 'lat: ' + lat + '  lng:' + lng,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
   inicializarArrayDePedidosFiltrados() {
     this.listaPedidosFiltrados = this.listaPedidos.slice();
