@@ -94,6 +94,7 @@ export class LomitaPage {
         return (pedido.nyaVecino.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
+    this.listaPedidosFiltrados.reverse();
   }
 
 
