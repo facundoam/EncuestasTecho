@@ -4,10 +4,10 @@ import { AgustoniPage } from './agustoni';
 
 @NgModule({
   declarations: [
-    AgustoniPage,
+    AgustoniPage
   ],
   imports: [
-    IonicPageModule.forChild(AgustoniPage),
+    IonicPageModule.forChild(AgustoniPage)
   ],
 })
 export class AgustoniPageModule {}

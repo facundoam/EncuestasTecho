@@ -10,14 +10,15 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { AgustoniPage } from '../pages/agustoni/agustoni';
 import { LomitaPage } from '../pages/lomita/lomita';
-
+import { OrderByPipe } from "../pipes/order-by/order-by";
 
 @NgModule({
   declarations: [
     MyApp,
     AgustoniPage,
     WelcomePage,
-    LomitaPage
+    LomitaPage,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

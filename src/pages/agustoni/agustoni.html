@@ -24,7 +24,7 @@
 
 
 
-      <ion-card *ngFor="let pedido of listaPedidosFiltrados">
+      <ion-card *ngFor="let pedido of listaPedidosFiltrados | orderBy">
 
       <ion-item>
         <h2>{{pedido.nyaVecino}}</h2>

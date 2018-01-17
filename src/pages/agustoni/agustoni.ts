@@ -9,7 +9,7 @@ import { LoadingController } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-agustoni',
-  templateUrl: 'agustoni.html'
+  templateUrl: 'agustoni.html',
 })
 
 export class AgustoniPage {
@@ -117,7 +117,6 @@ export class AgustoniPage {
         return (pedido.nyaVecino.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-    this.listaPedidosFiltrados.reverse();
   }
 
 }
