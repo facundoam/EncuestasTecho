@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PedidosEncuestaServiceProvider } from '../../providers/pedidos-encuesta-service/pedidos-encuesta-service';
-import { APP_ID_RANDOM_PROVIDER } from '@angular/core/src/application_tokens';
 
 /**
  * Generated class for the ModalAgustoniAddPage page.
@@ -58,7 +57,7 @@ export class ModalAgustoniAddPage {
       nombreVoluntario: valueData.nombreVoluntario,
       nyaVecino: valueData.nombreVecino,
       telefono: valueData.telefono,
-      imagenURL: 'noimg',
+      imagenURL: 'noimggitush',
       idPedido: Math.random() * (99999 - 1) + 1,
       subBarrio: 'agustoni',
       puntoGeografico: {

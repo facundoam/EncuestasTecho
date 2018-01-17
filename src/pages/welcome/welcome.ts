@@ -48,11 +48,11 @@ export class WelcomePage {
   }
 
   pushAgustoni() {
-    this.navCtrl.push(AgustoniPage, { 'listaPedidos': this.listaPedidosAgustoni });
+    this.navCtrl.push(AgustoniPage);
   }
 
   pushLomita() {
-    this.navCtrl.push(LomitaPage, { 'listaPedidos': this.listaPedidosLomita });
+    this.navCtrl.push(LomitaPage);
   }
 
 

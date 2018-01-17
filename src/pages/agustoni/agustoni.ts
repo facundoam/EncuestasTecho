@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AlertController } from 'ionic-angular';
-import { NavParams } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
 import { ModalController } from 'ionic-angular';
+import { PedidosEncuestaServiceProvider } from '../../providers/pedidos-encuesta-service/pedidos-encuesta-service';
+import { LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -18,9 +19,38 @@ export class AgustoniPage {
 
   constructor(private alertCtrl: AlertController,
     private geolocation: Geolocation,
-    private navParams: NavParams,
-    private modal: ModalController) {
+    private modal: ModalController,
+    private pedidosService: PedidosEncuestaServiceProvider,
+    private loadingCtrl: LoadingController) {
+    
+  }
 
+  ionViewDidLoad() {
+    this.getPedidosEncuestas();
+    this.inicializarArrayDePedidosFiltrados();
+  }
+
+  getPedidosEncuestas() {
+    let loader = this.loadingCtrl.create({
+      content: "Cargando..."
+    }); 
+
+    this.pedidosService.getPedidosEncuestas().subscribe(datos => {
+      loader.present();
+      this.listaPedidos = datos.filter((pedido) => {
+        if (pedido.subBarrio.includes("agustoni"))
+          return true;
+      });
+    },
+    error => console.log('Error from backend API', +error),
+    () => {
+      console.log("listo");
+      this.inicializarArrayDePedidosFiltrados();
+      setTimeout(() => {
+        loader.dismiss();
+      }, 1000);
+    }
+  );
   }
 
   openModalAdd() {
@@ -34,6 +64,9 @@ export class AgustoniPage {
       };
 
       const modalAgustoniAdd = this.modal.create('ModalAgustoniAddPage', { dataUbi: datosUbicacion });
+      modalAgustoniAdd.onDidDismiss(() => {
+       this.getPedidosEncuestas();
+      });
       modalAgustoniAdd.present();
 
     }).catch((error) => {
@@ -42,10 +75,7 @@ export class AgustoniPage {
 
   }
 
-  ionViewDidLoad() {
-    this.listaPedidos = this.navParams.get('listaPedidos');
-    this.inicializarArrayDePedidosFiltrados();
-  }
+
 
   getCurrentPosition() {
     let posOptions = { timeout: 10000, enableHighAccuracy: false };
