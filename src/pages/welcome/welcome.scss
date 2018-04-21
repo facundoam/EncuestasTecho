@@ -26,4 +26,13 @@ page-welcome {
 
 }
 
+$grid-padding-width:         2px !default;
+$grid-padding-widths: (
+  xs: $grid-padding-width,
+  sm: $grid-padding-width,
+  md: $grid-padding-width,
+  lg: $grid-padding-width,
+  xl: $grid-padding-width
+) !default;
+
 }
