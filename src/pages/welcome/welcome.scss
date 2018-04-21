@@ -2,10 +2,20 @@ page-welcome {
 
   .card-background-page {
 
-  ion-card {
-    position: relative;
-    text-align: center;
+    ion-row{
+      ion-card{
+          width:100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+      text-align: center;
+      position: relative;
+      img{
+          width:100%;
+      }
   }
+ }
 
   .card-title {
     position: absolute;
@@ -25,14 +35,5 @@ page-welcome {
   }
 
 }
-
-$grid-padding-width:         2px !default;
-$grid-padding-widths: (
-  xs: $grid-padding-width,
-  sm: $grid-padding-width,
-  md: $grid-padding-width,
-  lg: $grid-padding-width,
-  xl: $grid-padding-width
-) !default;
 
 }
